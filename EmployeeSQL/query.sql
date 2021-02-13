@@ -39,8 +39,6 @@ join departments
 on departments.dept_no=dept_manager.dept_no
 */
 
-
-
 select dept_manager.dept_no,
 	   departments.dept_name,
 	   dept_manager.emp_no,
@@ -54,6 +52,19 @@ on dept_manager.emp_no=employees.emp_no
 
 
 --List the department of each employee with the following information: employee number, last name, first name, and department name.
+select dept_emp.dept_no,
+	   dept_emp.emp_no,
+	   employees.last_name,
+	   employees.first_name,
+	   departments.dept_name
+from dept_emp
+join departments
+on departments.dept_no=dept_emp.dept_no
+join employees --> join that with employees in order to get last and first name
+on dept_emp.emp_no=employees.emp_no
+
+
+
 select * from dept_emp;
 select * from employees;
 select * from departments;
