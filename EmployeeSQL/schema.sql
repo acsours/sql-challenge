@@ -48,8 +48,10 @@ create table dept_emp (
 	foreign key (emp_no) references employees(emp_no),
 	foreign key (dept_no) references departments (dept_no)
 	);
-	
 
+alter table dept_emp add primary key (emp_no, dept_no);
+
+select * from dept_emp;
 --Drop table if exists
 drop table if exists dept_manager;
 
