@@ -1,5 +1,5 @@
 --Create new table
-drop table if exists titles; 
+drop table if exists titles cascade; 
 
 create table titles (
 	title_id varchar not null,
@@ -11,6 +11,8 @@ create table titles (
 
 --verify successful data import
 select * from titles;
+
+drop table if exists employees cascade; 
 
 --Create new table
 create table employees (
@@ -25,46 +27,28 @@ create table employees (
 	primary key (emp_no)
 	);
 
--- import data
-
---verify successful data import
-select * from employees;
-
 
 -- Create tables and import data
 --Drop table if exists
-drop table if exists departments;
+drop table if exists departments cascade;
 
 --Create new table
 create table departments (
-    dept_no  varchar not null, --should be a pk? 
+    dept_no  varchar not null, 
     dept_name varchar not null,
 	primary key(dept_no)
 	);
-
--- import data
-
---verify successful data import
-select * from departments;
 
 
 drop table if exists dept_emp;
 
 create table dept_emp (
-	emp_no int not null, --can't get this to work as primary key. it won't import the file.. i'ts b/c  one emp is working in multiple departements possibly, so it's not unique
+	emp_no int not null, 
 	dept_no varchar not null,
 	foreign key (emp_no) references employees(emp_no),
-	foreign key (dept_no) references departments (dept_no),
-	primary key (emp_no, dept_no)
+	foreign key (dept_no) references departments (dept_no)
 	);
 	
-select * from dept_emp
---
--- import data
-
---verify successful data import
-select * from dept_emp;
-
 
 --Drop table if exists
 drop table if exists dept_manager;
@@ -75,7 +59,7 @@ create table dept_manager (
 	emp_no int not null,
 	foreign key (emp_no) references employees (emp_no),
 	foreign key (dept_no) references departments (dept_no),
-	primary key	(dept_no, emp_no)
+	primary key	(emp_no)
 	);
 
 --verify successful data import

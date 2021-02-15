@@ -13,6 +13,7 @@ select employees.emp_no,
 from employees
 join salaries
 on employees.emp_no=salaries.emp_no;
+
 --List first name, last name, and hire date for employees who were hired in 1986.
 select * from employees;
 
@@ -20,15 +21,28 @@ select employees.last_name,
 	   employees.first_name,
 	   employees.hire_date
 from employees
-where (select extract(year from hire_date) from employees) = 1986;
+where 
+	employees.hire_date between '1986-01-01' and '1986-12-31';
 
---below returns hire_year--> how to use this to filter? 
 
-select extract(year from hire_date) from employees
-order by date_part;
 
 --List the manager of each department with the following information: 
 ---department number, department name, the manager's employee number, last name, first name.
+select dm.emp_no from dept_manager as dm;
+
+select dept_manager.dept_no,
+	   departments.dept_name,
+	   dept_manager.emp_no
+from dept_manager
+join departments
+on departments.dept_no=dept_manager.dept_no
+
+
+
+select
+join employees
+on dept_manager.emp_no=employees.emp_no
+
 --> join dept_manager and departemnts on dept_no
 /*this first join shows each manager's employee number, department name and number
 select dept_manager.dept_no,
