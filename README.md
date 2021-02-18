@@ -8,6 +8,9 @@ The sql_challenge_bouns.ipynb is a jupyter notebook that creates an engine to co
 
 
 ## Demo-Preview
+
+![sql_challenge_erd.png](EmployeeSQL/sql_challenge_erd.png?raw=true "Title")
+
    
 ![code_demo.png](images/code_demo.png?raw=true "Title")
 
