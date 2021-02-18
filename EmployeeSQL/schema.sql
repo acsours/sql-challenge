@@ -7,7 +7,6 @@ create table titles (
 	primary key(title_id) 
 	);
 
--- import data
 
 --verify successful data import
 select * from titles;
@@ -27,8 +26,6 @@ create table employees (
 	primary key (emp_no)
 	);
 
-
--- Create tables and import data
 --Drop table if exists
 drop table if exists departments cascade;
 
@@ -39,7 +36,7 @@ create table departments (
 	primary key(dept_no)
 	);
 
-
+--Drop table if exists
 drop table if exists dept_emp;
 
 create table dept_emp (
@@ -51,7 +48,9 @@ create table dept_emp (
 
 alter table dept_emp add primary key (emp_no, dept_no);
 
+--Verify sucessful data import
 select * from dept_emp;
+
 --Drop table if exists
 drop table if exists dept_manager;
 
@@ -79,6 +78,7 @@ create table salaries (
 	foreign key (emp_no) references employees (emp_no),
 	primary key (emp_no)
 	);
-	
+
+--verify successful data import
 select * from salaries;
 
